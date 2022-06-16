@@ -2,9 +2,11 @@ import React from "react";
 import {SearchAppBar} from "../AppBar/AppBar";
 import {Map} from "../Map/Map";
 
+import './Layout.scss'
+
 export const Layout = () => {
     return (
-        <div>
+        <div className='wrapper'>
             <SearchAppBar/>
             <Map/>
         </div>
