@@ -95,8 +95,6 @@ export const SearchAppBar = () => {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
         </Menu>
     );
 
@@ -150,7 +148,9 @@ export const SearchAppBar = () => {
                     </Search>
                     <Box sx={{flexGrow: 1}}/>
                     <Box sx={{display: {xs: 'none', md: 'flex'}}}>
-                        <CustomButton content='Dodaj Ogłoszenie' color='secondary'/>
+
+                        <CustomButton startIcon={<PostAddIcon/>} content='Dodaj Ogłoszenie'
+                                      color='secondary'/>
                     </Box>
                     <Box sx={{display: {xs: 'flex', md: 'none'}}}>
                         <IconButton
