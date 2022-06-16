@@ -14,9 +14,9 @@ app.use(json())
 
 //Routes
 
-app.get('/', async (req, res) => {
-    throw new ValidationError('tessssst')
-})
+// app.get('/', async (req, res) => {
+//     throw new ValidationError('tessssst')
+// })
 
 app.use(handleError);
 const port = 3001
