@@ -20,6 +20,10 @@ app.use(json())
 
 app.use(handleError);
 const port = 3001
+
+app.get('/', (req, res) => {
+    res.send(`Mega ogłoszenia running on ${port}`);
+});
 app.listen(port, '0.0.0.0', () => {
     console.log(`listening on http://localhost:${port}`)
 })
