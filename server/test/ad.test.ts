@@ -15,3 +15,6 @@ test('AdRecord returns null from database for unexisting entry.', async () => {
         expect(ad).toBeNull()
     }
 )
+
+
+//@TODO: Listowanie oraz dodawanie ogłoszeń
