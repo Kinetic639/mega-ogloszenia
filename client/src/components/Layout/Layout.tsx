@@ -3,13 +3,17 @@ import {SearchAppBar} from "../AppBar/AppBar";
 import {Map} from "../Map/Map";
 
 import './Layout.scss'
-import {NowyBar} from "../nowyBar/nowyBar";
+import {Routes, Route} from "react-router-dom";
+import {AddForm} from "../AddForm/AddForm";
 
 export const Layout = () => {
     return (
         <div className='wrapper'>
             <SearchAppBar/>
-            <Map/>
+            <Routes>
+                <Route path={"/"} element={<Map/>}/>
+                <Route path={"/add"} element={<AddForm/>}/>
+            </Routes>
         </div>
     )
 
