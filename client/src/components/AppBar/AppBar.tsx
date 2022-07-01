@@ -12,6 +12,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import {CustomButton} from "../common/CustomButton";
+import {SyntheticEvent, useContext, useState} from "react";
+import {SearchContext} from "../../context/search-context";
 
 const Search = styled('div')(({theme}) => ({
     position: 'relative',
@@ -54,6 +56,16 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 }));
 
 export const SearchAppBar = () => {
+
+    const {search, setSearch} = useContext(SearchContext)
+    const [inputVal, setInputVal] = useState(search)
+
+    const setSearchFromLocalState = (e: SyntheticEvent) => {
+        e.preventDefault()
+        setSearch(inputVal)
+    }
+
+
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
         React.useState<null | HTMLElement>(null);
@@ -141,10 +153,14 @@ export const SearchAppBar = () => {
                         <SearchIconWrapper>
                             <SearchIcon/>
                         </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Szukaj Ogłoszeń…"
-                            inputProps={{'aria-label': 'search'}}
-                        />
+                        <form onSubmit={setSearchFromLocalState}>
+                            <StyledInputBase
+                                placeholder="Szukaj Ogłoszeń…"
+                                inputProps={{'aria-label': 'search'}}
+                                value={inputVal}
+                                onChange={e => setInputVal(e.target.value)}
+                            />
+                        </form>
                     </Search>
                     <Box sx={{flexGrow: 1}}/>
                     <Box sx={{display: {xs: 'none', md: 'flex'}}}>

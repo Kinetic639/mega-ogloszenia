@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Layout} from "./components/Layout/Layout";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {orange, teal} from '@mui/material/colors';
+import {SearchContext} from "./context/search-context";
 
 declare module '@mui/material/styles' {
     interface Theme {
@@ -31,9 +32,12 @@ const theme = createTheme({
 });
 
 export const App = () => {
+    const [search, setSearch] = useState('')
     return (
         <ThemeProvider theme={theme}>
-            <Layout/>
+            <SearchContext.Provider value={{search, setSearch}}>
+                <Layout/>
+            </SearchContext.Provider>
         </ThemeProvider>
     )
 }

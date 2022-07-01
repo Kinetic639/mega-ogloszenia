@@ -1,4 +1,5 @@
 import {AdRecord} from "../records/ad.record";
+import {AdEntity} from "../types";
 
 const defaultObj = {
     name: 'Test Name',
