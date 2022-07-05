@@ -24,15 +24,15 @@ const router = Router()
 
 router.use('/ad', adRouter)
 
-app.use('api', router)
+app.use('/api', router)
 
 app.use(handleError);
 const port = 3001
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.send(`Mega ogłoszenia running on ${port}`);
 });
 app.listen(port, '0.0.0.0', () => {
-    console.log(`listening on http://localhost:${port}`)
+    console.log(`listening on http://localhost:${port}/api`)
 })
 
