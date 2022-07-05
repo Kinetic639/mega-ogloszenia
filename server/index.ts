@@ -1,4 +1,4 @@
-import express, {json} from "express";
+import express, {json, Router} from "express";
 import cors from "cors";
 import 'express-async-errors'
 import {handleError} from "./utils/errors/errors";
@@ -20,12 +20,11 @@ app.use(rateLimit({
 
 
 //Routes
+const router = Router()
 
-app.use('/ad', adRouter)
+router.use('/ad', adRouter)
 
-// app.get('/', async (req, res) => {
-//     throw new ValidationError('tessssst')
-// })
+app.use('api', router)
 
 app.use(handleError);
 const port = 3001
