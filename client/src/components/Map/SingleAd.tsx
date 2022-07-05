@@ -3,6 +3,7 @@ import {AdEntity} from "types";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
+import {apiUrl} from "../../config/api";
 
 interface Props {
     id: string
@@ -14,7 +15,7 @@ export const SingleAd = ({id}: Props) => {
     useEffect(() => {
         (async () => {
 
-            const res = await fetch(`http://localhost:3001/ad/${id}`)
+            const res = await fetch(`${apiUrl}/ad/${id}`)
             const data = await res.json()
 
             setAd(data)

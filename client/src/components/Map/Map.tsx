@@ -10,6 +10,7 @@ import '../../utils/fix-map-icons'
 
 import 'leaflet/dist/leaflet.css';
 import './Map.scss'
+import {apiUrl} from "../../config/api";
 
 
 export const Map = () => {
@@ -18,7 +19,7 @@ export const Map = () => {
 
     useEffect(() => {
         (async () => {
-            const res = await fetch(`http://localhost:3001/ad/search/${search}`)
+            const res = await fetch(`${apiUrl}/ad/search/${search}`)
             const data = await res.json()
 
             setAds(data)

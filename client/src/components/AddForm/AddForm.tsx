@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import {motion} from "framer-motion";
 import {FadeInUpVariants} from "../../utils/motionUtils";
+import {apiUrl} from "../../config/api";
 
 export const AddForm = () => {
     const [loading, setLoading] = useState(false)
@@ -34,7 +35,7 @@ export const AddForm = () => {
 
             const {lat, lon} = await geoCode(form.address);
 
-            const res = await fetch(`http://localhost:3001/ad`, {
+            const res = await fetch(`${apiUrl}/ad`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
