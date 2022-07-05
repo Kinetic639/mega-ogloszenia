@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {AdEntity} from "types";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import Box from "@mui/material/Box";
 
 interface Props {
     id: string
@@ -23,13 +26,17 @@ export const SingleAd = ({id}: Props) => {
     }
 
     return (
-        <>
-            <h2>{ad.name}</h2>
-            <p>{ad.description}</p>
+        <Box component='div'>
+            <Typography variant="h6" color='primary'>{ad.name}</Typography>
+            <Typography variant="subtitle2" color='primary'>{ad.description}</Typography>
             {!!ad.price && <p><b>{ad.price} zł</b></p>}
             <hr/>
-            <a href={ad.url} target={"_blank"} rel="noreferrer">Otwórz ogłoszenie</a>
+            <Link underline='hover' color='secondary' href={`https://${ad.url}`} target={"_blank"}
+                  rel="noreferrer">Otwórz
+                ogłoszenie</Link>
 
-        </>
+        </Box>
     )
 }
+
+

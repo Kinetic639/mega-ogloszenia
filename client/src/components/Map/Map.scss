@@ -6,3 +6,8 @@
 .leaflet-container {
   height: 100%;
 }
+
+.marker-popup {
+  width: fit-content;
+  min-width: 200px;
+}

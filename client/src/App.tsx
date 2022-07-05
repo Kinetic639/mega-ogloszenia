@@ -4,6 +4,7 @@ import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {orange, teal} from '@mui/material/colors';
 import {SearchContext} from "./context/search-context";
 
+
 declare module '@mui/material/styles' {
     interface Theme {
         status: {
