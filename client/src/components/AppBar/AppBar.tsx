@@ -11,9 +11,14 @@ import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import PostAddIcon from '@mui/icons-material/PostAdd';
-import {CustomButton} from "../common/CustomButton";
+import {CustomButton} from "../common/CustomButton/CustomButton";
 import {SyntheticEvent, useContext, useState} from "react";
 import {SearchContext} from "../../context/search-context";
+import {NavLink} from "react-router-dom";
+import HelpIcon from '@mui/icons-material/Help';
+import MapIcon from '@mui/icons-material/Map';
+
+import "./Appbar.scss"
 
 const Search = styled('div')(({theme}) => ({
     position: 'relative',
@@ -127,12 +132,30 @@ export const SearchAppBar = () => {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem>
-                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                    <PostAddIcon/>
-                </IconButton>
-                <p>Dodaj ogłoszenie</p>
-            </MenuItem>
+            <NavLink className="link link__nav" to='/'>
+                <MenuItem>
+                    <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                        <MapIcon/>
+                    </IconButton>
+                    <p>Mapa</p>
+                </MenuItem>
+            </NavLink>
+            <NavLink className="link link__nav" to='/add'>
+                <MenuItem>
+                    <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                        <PostAddIcon/>
+                    </IconButton>
+                    <p>Dodaj ogłoszenie</p>
+                </MenuItem>
+            </NavLink>
+            <NavLink className="link link__nav" to='/info'>
+                <MenuItem>
+                    <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                        <HelpIcon/>
+                    </IconButton>
+                    <p>Informacje</p>
+                </MenuItem>
+            </NavLink>
 
         </Menu>
     );
@@ -141,14 +164,17 @@ export const SearchAppBar = () => {
         <Box sx={{flexGrow: 1}}>
             <AppBar position="static">
                 <Toolbar>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{display: {xs: 'none', sm: 'block'}}}
-                    >
-                        Mega Ogłoszenia
-                    </Typography>
+                    <NavLink className="link link__logo" to="/">
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            sx={{display: {xs: 'none', sm: 'block'}}}
+                        >
+                            <strong>Mega</strong> Ogłoszenia
+                        </Typography>
+                    </NavLink>
+                    <Box sx={{flexGrow: 1}}/>
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon/>
@@ -164,9 +190,19 @@ export const SearchAppBar = () => {
                     </Search>
                     <Box sx={{flexGrow: 1}}/>
                     <Box sx={{display: {xs: 'none', md: 'flex'}}}>
+                        <NavLink className="link link__nav" to="/info">
+                            <CustomButton
+                                variant='text'
+                                startIcon={<HelpIcon/>}
+                                content=''
+                                color='secondary'/>
+                        </NavLink>
 
-                        <CustomButton startIcon={<PostAddIcon/>} content='Dodaj Ogłoszenie'
-                                      color='secondary'/>
+                        <NavLink className="link link__nav" to="/add">
+                            <CustomButton startIcon={<PostAddIcon/>}
+                                          content='Dodaj Ogłoszenie'
+                                          color='secondary'/>
+                        </NavLink>
                     </Box>
                     <Box sx={{display: {xs: 'flex', md: 'none'}}}>
                         <IconButton

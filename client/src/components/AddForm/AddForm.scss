@@ -1,0 +1,16 @@
+.add-form {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 20px 5px;
+
+  & input, & textarea {
+    width: 100%;
+    padding: 10px;;
+  }
+
+  &__button {
+    width: 100%;
+    padding: 10px 0;
+  }
+}
+
